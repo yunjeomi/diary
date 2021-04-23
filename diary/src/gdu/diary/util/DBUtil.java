@@ -17,14 +17,14 @@ public class DBUtil {
 	}
 	
 	public void close(Connection conn, PreparedStatement stmt, ResultSet rs) {
-		if(rs != null) {
+		if(conn != null) {
 			try {
-				rs.close();
+				conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		if(rs != null) {
+		if(stmt != null) {
 			try {
 				stmt.close();
 			} catch (Exception e) {
@@ -33,7 +33,7 @@ public class DBUtil {
 		}
 		if(rs != null) {
 			try {
-				conn.close();
+				rs.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -4,17 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>deleteMember</title>
+<title>modifyMemberPw</title>
 </head>
 <body>
-	<h1>deleteMember</h1>
+	<h1>modifyMemberPw</h1>
 	
-	<form action="${pageContext.request.contextPath}/auth/deleteMember" method="post">
+	<form action="${pageContext.request.contextPath}/auth/modifyMemberPw" method="post">
 		<table border="1">
 			<tr>
 				<td>memberId</td>
 				<td>
-					<input type="text" name="memberId" value="${memberId}" readonly>
+					<input type="hidden" name="memberNo" value="${member.memberNo}">
+					<input type="text" name="memberId" value="${member.memberId}" readonly>
 				</td>
 			</tr>
 			<tr>
@@ -24,7 +25,8 @@
 				</td>
 			</tr>
 		</table>
-		<button type="submit">회원탈퇴</button>
+		<button type="submit">비밀번호변경</button>
 	</form>
+	<a href="${pageContext.request.contextPath}/auth/myAccount">취소</a>
 </body>
 </html>

@@ -4,17 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>updateMemberPw</title>
+<title>addMember</title>
 </head>
 <body>
-	<h1>updateMemberPw</h1>
+	<h1>회원가입</h1>
 	
-	<form action="${pageContext.request.contextPath}/auth/updateMember" method="post">
+	<form action="${pageContext.request.contextPath}/addMember" method="post">
 		<table border="1">
 			<tr>
 				<td>memberId</td>
 				<td>
-					<input type="text" name="memberId" value="${memberId}" readonly>
+					<input type="text" name="memberId" placeholder="example@example.com">
 				</td>
 			</tr>
 			<tr>
@@ -24,7 +24,8 @@
 				</td>
 			</tr>
 		</table>
-		<button type="submit">비밀번호변경</button>
+		<button type="submit">회원가입</button>
 	</form>
+	<a href="${pageContext.request.contextPath}/login">취소</a>
 </body>
 </html>

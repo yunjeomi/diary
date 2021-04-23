@@ -25,7 +25,7 @@ public class MemberOneController extends HttpServlet {
 		
 		//forward - 멤버값을 memberOne.jsp로 보내준다
 		request.setAttribute("member", member);
-		request.getRequestDispatcher("/WEB-INF/view/member/memberOne.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/view/auth/memberOne.jsp").forward(request, response);
 	}
 
 }

@@ -19,10 +19,10 @@
 		</tr>
 		<tr>
 			<td>memberPw</td>
-			<td><a href="${pageContext.request.contextPath}/auth/updateMember?memberId=${member.memberId}">변경</a></td>
+			<td><a href="${pageContext.request.contextPath}/auth/modifyMemberPw">변경</a></td>
 		</tr>
 	</table>
-	<a href="${pageContext.request.contextPath}/auth/deleteMember?memberId=${member.memberId}"><button type="button">회원탈퇴</button></a>
+	<a href="${pageContext.request.contextPath}/auth/removeMember"><button type="button">회원탈퇴</button></a>
 	<a href="${pageContext.request.contextPath}/login"><button type="button">홈으로</button></a>
 </body>
 </html>

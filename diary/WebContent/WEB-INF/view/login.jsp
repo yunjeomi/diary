@@ -17,7 +17,7 @@
 				<div><button type="submit">로그인</button></div>
 			</div>
 		</form>
-		<div><a href="${pageContext.request.contextPath}/insertMember">회원가입</a></div>
+		<div><a href="${pageContext.request.contextPath}/addMember">회원가입</a></div>
 	</c:if>
 	
 	<!-- 로그인 후; 로그인 되어있을 때 -->
