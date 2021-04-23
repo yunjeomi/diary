@@ -19,7 +19,7 @@ public class TodoDao {
 			System.out.println("deleteTodoByMember stmt-> "+stmt);
 			returnCnt = stmt.executeUpdate();
 		} finally {
-			this.dbUtil.close(conn, stmt, null);
+			this.dbUtil.close(null, stmt, null);
 		}
 		
 		return returnCnt;
