@@ -67,8 +67,10 @@ public class MemberService {
 			conn = this.dbUtil.getConnection();
 			checkIdCnt = this.memberDao.countId(conn, member.getMemberId());
 			System.out.println("*id 중복체크 cnt 1중복, 0가입가능*-> "+checkIdCnt);
-			memberCnt = this.memberDao.insertMember(conn, member);
-			System.out.println("*가입cnt 1성공, 0실패*-> "+memberCnt);
+			if(checkIdCnt==0) {	//Id가 중복 되지 않아 회원가입이 가능한 경우에 회원가입 메소드를 실행 할 것
+				memberCnt = this.memberDao.insertMember(conn, member);
+				System.out.println("*가입cnt 1성공, 0실패*-> "+memberCnt);
+			}
 			conn.commit();
 		} catch (Exception e) {
 			try {
@@ -80,7 +82,7 @@ public class MemberService {
 			this.dbUtil.close(conn, null, null);
 		}
 		
-		return checkIdCnt;	//중복 아이디 있으면 가입 못하도록 리턴값 자체를 countId 값으로 받는다.
+		return memberCnt;	//최종적으로 memberCnt를 받아 1이면 가입 완료 하도록 하자
 	}
 	
 	//비밀번호 변경

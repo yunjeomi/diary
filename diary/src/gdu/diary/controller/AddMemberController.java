@@ -42,15 +42,15 @@ public class AddMemberController extends HttpServlet {
 		System.out.println("회원가입 정보-> "+member.toString());
 		
 		//모델호출 - id체크와 가입을 동시에 진행한다.
-		int cnt = 1;
+		int cnt = 0;
 		cnt = this.memberService.addMember(member);
-		if(cnt == 1) {	//1; 중복된 id 존재 
+		if(cnt == 0) {	//0; id중복이면 회원가입실패로 addMember()의 리턴값이 0이다.
 			System.out.println("*중복된 id*\n");
 			response.sendRedirect(request.getContextPath()+"/addMember");
 			return;
 		}
 		
-		//cnt값이 0 일때 회원가입 실행
+		//cnt값이 0 아닐 때 회원가입 실행
 		System.out.println("*회원가입 완료*");
 		
 		//sendRedirect - 로그인 페이지로 이동하라
