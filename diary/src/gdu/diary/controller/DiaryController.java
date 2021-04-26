@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import gdu.diary.service.DiaryService;
+import gdu.diary.vo.Member;
 
 
 @WebServlet("/auth/diary")
@@ -21,9 +23,11 @@ public class DiaryController extends HttpServlet {
 		//아예 값이 넘어오지 않으면 null값이 넘어 온다.
 		String targetYear = request.getParameter("targetYear");
 		String targetMonth = request.getParameter("targetMonth");
+		HttpSession session = request.getSession();
+		int memberNo = ((Member)(session.getAttribute("sessionMember"))).getMemberNo();
 		
 		//모델 호출
-		Map<String, Object> diaryMap = this.diaryService.getDiary(targetYear, targetMonth);
+		Map<String, Object> diaryMap = this.diaryService.getDiary(memberNo, targetYear, targetMonth);
 		
 		request.setAttribute("diaryMap", diaryMap);
 		

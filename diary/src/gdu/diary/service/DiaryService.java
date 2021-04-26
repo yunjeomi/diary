@@ -1,13 +1,22 @@
 package gdu.diary.service;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import gdu.diary.dao.TodoDao;
+import gdu.diary.util.DBUtil;
+import gdu.diary.vo.Todo;
+
 public class DiaryService {
-	
+	//서비스는 어떤 dao든 호출 할 수 있다.
+	private TodoDao todoDao;
+	private DBUtil dbUtil;
 	//Dao를 따로 호출하지 않고 Service에서만 처리한다.
-	public Map<String, Object> getDiary(String targetYear, String targetMonth){
+	public Map<String, Object> getDiary(int memberNo, String targetYear, String targetMonth){
 		/*
 		 * 타겟 년, 월, 일(날짜)
 		 * 타겟 달의 1일(날짜)
@@ -19,20 +28,6 @@ public class DiaryService {
 		 * 이번달 숫자가 나와야 할 셀의 갯수(1~마지막 날짜)
 		 * 뒤의 빈 셀의 갯수 -> endBlank = (7-(startBlank + endDay)%7)
 		 */
-		
-		Map<String, Object> map = new HashMap<>();
-		
-		Calendar target = Calendar.getInstance();
-		
-		if(targetYear != null) {
-			target.set(Calendar.YEAR, Integer.parseInt(targetYear));
-		}
-		
-		if(targetMonth != null) {
-			//두번째 인수값이 -1이면 target의 년을 -1하고, 월은 11(12월)값이 들어간다.
-			//두번째 인수값이 12이면 target의 년을 +1하고, 월은 0(1월)값이 들어간다.
-			target.set(Calendar.MONTH, Integer.parseInt(targetMonth));
-		}
 		
 		/*
 		int numTargetMonth = 0;
@@ -52,6 +47,19 @@ public class DiaryService {
 			target.set(Calendar.YEAR, numTargetYear);
 			target.set(Calendar.MONTH, numTargetMonth-1);
 		}*/
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		Calendar target = Calendar.getInstance();
+		
+		if(targetYear != null) {
+			target.set(Calendar.YEAR, Integer.parseInt(targetYear));
+		}
+		if(targetMonth != null) {
+			//두번째 인수값이 -1이면 target의 년을 -1하고, 월은 11(12월)값이 들어간다.
+			//두번째 인수값이 12이면 target의 년을 +1하고, 월은 0(1월)값이 들어간다.
+			target.set(Calendar.MONTH, Integer.parseInt(targetMonth));
+		}
 		
 		//일은 무조건 1일로 바꿔야 한다.
 		target.set(Calendar.DATE, 1);
@@ -78,6 +86,30 @@ public class DiaryService {
 		map.put("endDay", endDay);
 		map.put("endBlank", endBlank);
 		
+		//2. todo목록 가져와서 추가한다.
+		this.todoDao = new TodoDao();
+		this.dbUtil = new DBUtil();
+		List<Todo> todoList = null;
+		Connection conn = null;
+		try {
+			conn = this.dbUtil.getConnection();
+			todoList = this.todoDao.selectTodoListByDate(conn, memberNo, target.get(Calendar.YEAR), target.get(Calendar.MONTH)+1);
+			conn.commit();
+		} catch(Exception e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		map.put("todoList", todoList);
 		return map;
 	}
 }
