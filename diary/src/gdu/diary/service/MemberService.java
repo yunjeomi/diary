@@ -49,7 +49,11 @@ public class MemberService {
 			}
 			e.printStackTrace();
 		} finally {
-			this.dbUtil.close(conn, null, null);
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return returnMember;
@@ -79,7 +83,11 @@ public class MemberService {
 				e1.printStackTrace();
 			}
 		} finally {
-			this.dbUtil.close(conn, null, null);
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return memberCnt;	//최종적으로 memberCnt를 받아 1이면 가입 완료 하도록 하자
@@ -105,7 +113,11 @@ public class MemberService {
 			}
 			e.printStackTrace();
 		} finally {
-			this.dbUtil.close(conn, null, null);
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return returnCnt;
@@ -138,7 +150,11 @@ public class MemberService {
 			e.printStackTrace();
 			return false;
 		} finally {
-			this.dbUtil.close(conn, null, null);
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return (todoRowCnt+memberRowCnt)>0;

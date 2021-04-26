@@ -65,11 +65,12 @@ public class DiaryService {
 		}
 		//int totalCell = startBlank + endDay + endBlank;
 		
-		System.out.println(targetYear);
-		System.out.println(targetMonth);
-		System.out.println(startBlank);
-		System.out.println(endDay);
-		System.out.println(endBlank);
+		System.out.println("targetYear-> "+targetYear);
+		System.out.println("targetMonth-> "+targetMonth);
+		System.out.println("startBlank-> "+startBlank);
+		System.out.println("endDay-> "+endDay);
+		System.out.println("endBlank-> "+endBlank);
+		System.out.println();
 		
 		map.put("targetYear", target.get(Calendar.YEAR));
 		map.put("targetMonth", target.get(Calendar.MONTH));

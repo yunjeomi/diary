@@ -24,7 +24,7 @@ public class MemberDao {
 			System.out.println("deleteMember stmt-> "+stmt);
 			returnCnt = stmt.executeUpdate();
 		} finally {
-			this.dbUtil.close(null, stmt, null);
+			stmt.close();
 		}
 		return returnCnt;
 	}
@@ -43,7 +43,7 @@ public class MemberDao {
 			System.out.println("updateMemberPw stmt-> "+stmt);
 			returnCnt = stmt.executeUpdate();
 		} finally {
-			this.dbUtil.close(null, stmt, null);
+			stmt.close();
 		}
 		return returnCnt;
 	}
@@ -63,7 +63,8 @@ public class MemberDao {
 				returnCnt = rs.getInt("cnt");
 			}
 		} finally {
-			this.dbUtil.close(null, stmt, rs);
+			rs.close();
+			stmt.close();
 		}
 		
 		return returnCnt;
@@ -81,7 +82,7 @@ public class MemberDao {
 			System.out.println("insertMember stmt-> "+stmt);
 			returnCnt = stmt.executeUpdate();
 		} finally {
-			this.dbUtil.close(null, stmt, null);
+			stmt.close();
 		}
 		return returnCnt;
 	}
@@ -105,7 +106,7 @@ public class MemberDao {
 				returnMember.setMemberDate(rs.getString("memberDate"));
 			}
 		} finally {
-			this.dbUtil.close(null, stmt, null);
+			stmt.close();
 		}
 		
 		return returnMember;

@@ -16,6 +16,7 @@ public class DBUtil {
 		return conn;
 	}
 	
+	/* 직접 close한다.
 	public void close(Connection conn, PreparedStatement stmt, ResultSet rs) {
 		if(rs != null) {
 			try {
@@ -38,5 +39,5 @@ public class DBUtil {
 				e.printStackTrace();
 			}
 		}
-	}
+	}*/
 }
