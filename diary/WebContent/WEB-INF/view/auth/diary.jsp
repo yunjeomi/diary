@@ -7,17 +7,13 @@
 <title>diary</title>
 </head>
 <body>
-	<div>${diaryMap.targetYear}년  ${diaryMap.targetMonth+1}월</div>
-	<div>startBlank: ${diaryMap.startBlank}</div>
-	<div>endDay: ${diaryMap.endDay}</div>
-	<div>endBlank: ${diaryMap.endBlank}</div>
 	
 	<c:set var="totalCell" value="${diaryMap.startBlank+diaryMap.endDay+diaryMap.endBlank}"/>
 	<div>totalCell: ${totalCell}</div>
 	
 	<h1>
 		<a href="${pageContext.request.contextPath}/auth/diary?targetYear=${diaryMap.targetYear}&targetMonth=${diaryMap.targetMonth-1}">이전 달</a>
-		 ${diaryMap.targetMonth+1}월
+		 ${diaryMap.targetYear}년 ${diaryMap.targetMonth+1}월
 		<a href="${pageContext.request.contextPath}/auth/diary?targetYear=${diaryMap.targetYear}&targetMonth=${diaryMap.targetMonth+1}">다음 달</a>
 	
 	</h1>
@@ -32,7 +28,7 @@
 				<c:set var="num" value="${i-diaryMap.startBlank}"/>
 				<td>
 					<c:if test="${num>0 && num<=diaryMap.endDay}">
-						<a href="${pageContext.request.contextPath}/auth/addTodo?targetYear=${diaryMap.targetYear}&targetMonth=${diaryMap.targetMonth+1}&targetDate=${num}">
+						<a href="${pageContext.request.contextPath}/auth/addTodo?year=${diaryMap.targetYear}&month=${diaryMap.targetMonth+1}&day=${num}">
 							${num}
 						</a>
 					</c:if>
