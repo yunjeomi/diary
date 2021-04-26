@@ -134,9 +134,9 @@ public class MemberService {
 		int memberRowCnt = 0;
 		try {
 			conn = this.dbUtil.getConnection();
-			todoRowCnt = this.todoDao.deleteTodoByMember(conn, member.getMemberNo());
-			memberRowCnt = this.memberDao.deleteMemberByKey(conn, member);
+			todoRowCnt = this.todoDao.deleteTodoByMember(conn, member);
 			System.out.println("todo삭제 갯수 -> "+todoRowCnt);
+			memberRowCnt = this.memberDao.deleteMemberByKey(conn, member);
 			System.out.println("회원탈퇴 성공1, 실패0-> "+memberRowCnt);
 			conn.commit();
 		} catch (Exception e) {

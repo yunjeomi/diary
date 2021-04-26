@@ -3,10 +3,10 @@ package gdu.diary.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import gdu.diary.vo.Member;
 import gdu.diary.vo.Todo;
 
 public class TodoDao {
@@ -120,12 +120,13 @@ public class TodoDao {
 	}
 	
 	//todo 전체 삭제 메소드
-	public int deleteTodoByMember(Connection conn, int memberNo) throws Exception{
+	public int deleteTodoByMember(Connection conn, Member member) throws Exception{
 		int returnCnt = 0;
 		PreparedStatement stmt = null;
 		try {
 			stmt = conn.prepareStatement(TodoQuery.DELETE_TODO_BY_MEMBER);
-			stmt.setInt(1, memberNo);
+			stmt.setInt(1, member.getMemberNo());
+			stmt.setString(2, member.getMemberPw());
 			System.out.println("deleteTodoByMember stmt-> "+stmt);
 			returnCnt = stmt.executeUpdate();
 		} finally {

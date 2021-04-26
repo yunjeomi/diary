@@ -7,7 +7,7 @@
 <title>diary</title>
 </head>
 <body>
-	
+	<a href="${pageContext.request.contextPath}/login"><button type="button">홈으로</button></a>
 	<c:set var="totalCell" value="${diaryMap.startBlank+diaryMap.endDay+diaryMap.endBlank}"/>
 	<div>totalCell: ${totalCell}</div>
 	
