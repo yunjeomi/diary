@@ -48,6 +48,7 @@ public class DiaryService {
 			target.set(Calendar.MONTH, numTargetMonth-1);
 		}*/
 		
+		//1. 캘린더 출력
 		Map<String, Object> map = new HashMap<>();
 		
 		Calendar target = Calendar.getInstance();
@@ -86,14 +87,21 @@ public class DiaryService {
 		map.put("endDay", endDay);
 		map.put("endBlank", endBlank);
 		
-		//2. todo목록 가져와서 추가한다.
+		//2. todo목록 가져와서 추가한다. + 3. dday목록 추가한다.
 		this.todoDao = new TodoDao();
 		this.dbUtil = new DBUtil();
+		
+		//todoList
 		List<Todo> todoList = null;
+		
+		//ddayList
+		List<Map<String, Object>> ddayList = null;
+		
 		Connection conn = null;
 		try {
 			conn = this.dbUtil.getConnection();
 			todoList = this.todoDao.selectTodoListByDate(conn, memberNo, target.get(Calendar.YEAR), target.get(Calendar.MONTH)+1);
+			ddayList = this.todoDao.selectTodoDdayList(conn, memberNo);
 			conn.commit();
 		} catch(Exception e) {
 			try {
@@ -110,6 +118,7 @@ public class DiaryService {
 			}
 		}
 		map.put("todoList", todoList);
+		map.put("ddayList", ddayList);
 		return map;
 	}
 }

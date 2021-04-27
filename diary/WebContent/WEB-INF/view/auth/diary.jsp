@@ -7,15 +7,36 @@
 <title>diary</title>
 </head>
 <body>
-	<a href="${pageContext.request.contextPath}/login"><button type="button">홈으로</button></a>
+	<jsp:include page="/WEB-INF/view/inc/mainMenu.jsp"></jsp:include>
+	
+	<h1>D-day List</h1>
+	
+	<div>
+		<table border="1">
+			<tr>
+				<td>D-day</td>
+				<td>Date</td>
+				<td>Title</td>
+			</tr>
+			
+			<c:forEach var="d" items="${diaryMap.ddayList}">
+				<tr>
+					<td>-${d.dday}</td>
+					<td>${d.todoDate}</td>
+					<td>
+						<a href="${pageContext.request.contextPath}/auth/todoOne?todoNo=${d.todoNo}">${d.todoTitle}</a>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
+	
 	<c:set var="totalCell" value="${diaryMap.startBlank+diaryMap.endDay+diaryMap.endBlank}"/>
-	<div>totalCell: ${totalCell}</div>
 	
 	<h1>
 		<a href="${pageContext.request.contextPath}/auth/diary?targetYear=${diaryMap.targetYear}&targetMonth=${diaryMap.targetMonth-1}">이전 달</a>
 		 ${diaryMap.targetYear}년 ${diaryMap.targetMonth+1}월
 		<a href="${pageContext.request.contextPath}/auth/diary?targetYear=${diaryMap.targetYear}&targetMonth=${diaryMap.targetMonth+1}">다음 달</a>
-	
 	</h1>
 	
 	<table border="1" width="90%">

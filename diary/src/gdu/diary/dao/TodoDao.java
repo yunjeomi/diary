@@ -4,12 +4,38 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import gdu.diary.vo.Member;
 import gdu.diary.vo.Todo;
 
 public class TodoDao {
+	//todo dday출력
+	public List<Map<String, Object>> selectTodoDdayList(Connection conn, int memberNo) throws Exception{
+		List<Map<String, Object>> list = new ArrayList<>();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = conn.prepareStatement(TodoQuery.SELECT_TODO_DDAY_LIST);
+			stmt.setInt(1, memberNo);
+			System.out.println("selectTodoDdayList stmt-> "+stmt);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<>();
+				map.put("todoNo", rs.getInt("todoNo"));
+				map.put("todoTitle", rs.getString("todoTitle"));
+				map.put("todoDate", rs.getString("todoDate"));
+				map.put("dday", rs.getInt("dday"));
+				list.add(map);
+			}
+		} finally {
+			rs.close();
+			stmt.close();
+		}
+		return list;
+	}
 	
 	//todo 한개 삭제 메소드
 	public int deleteTodoOne(Connection conn, int todoNo, int memberNo) throws Exception{
