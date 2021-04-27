@@ -5,25 +5,80 @@
 <head>
 <meta charset="UTF-8">
 <title>login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 </head>
-<body>
-	<!-- 로그인 전; 로그인 안 되어있을 때 -->
-	<c:if test="${sessionMember == null}">
-		<h1>login</h1>
-		<form action="${pageContext.request.contextPath}/login" method="post">
-			<div>
-				<div>ID <input type="text" name="memberId"></div>
-				<div>PW <input type="password" name="memberPw"></div>
-				<div><button type="submit">로그인</button></div>
-			</div>
-		</form>
-		<div><a href="${pageContext.request.contextPath}/addMember">회원가입</a></div>
-	</c:if>
+<body class="is-preload">
+<!-- Wrapper -->
+<div id="wrapper">
+
+	<!-- Main -->
+	<div id="main">
+		<div class="inner">
+			<!-- Content -->
+				<header id="header">
+					<h1>Simple Diary</h1>
+				</header>
+				
+				<section>
+					<header class="main">
+					<h2>Write down what happens each day!</h2>
+					<h2>It's easy to manage your schedule!</h2>
+					<h2>Let's join us!</h2>
+					</header>
+				</section>
+
+		</div>
+	</div>
 	
-	<!-- 로그인 후; 로그인 되어있을 때 -->
-	<c:if test="${sessionMember != null}">
-		<div>${sessionMember.memberId}님 반갑습니다.</div>
-		<jsp:include page="/WEB-INF/view/inc/mainMenu.jsp"></jsp:include>
-	</c:if>
+	<!-- Sidebar -->
+	<div id="sidebar">
+		<div class="inner">
+		
+			<!-- 로그인 전; 로그인 안 되어있을 때 -->
+			<c:if test="${sessionMember == null}">
+				<section id="search" class="alt">
+					<form action="${pageContext.request.contextPath}/login" method="post">
+						<div>ID <input type="text" name="memberId"></div>
+						<div>PW <input type="password" name="memberPw"></div>
+						<br>
+						<button type="submit">로그인</button>
+						<a href="${pageContext.request.contextPath}/addMember" class="button primary">회원가입</a>
+					</form>
+				</section>
+			</c:if>
+			
+			<!-- 로그인 후; 로그인 되어있을 때 -->
+			<!-- Menu -->
+			<c:if test="${sessionMember != null}">
+				<nav id="menu">
+					<header class="major">
+						<h2>${sessionMember.memberId}님 반갑습니다.</h2>
+					</header>
+					<jsp:include page="/WEB-INF/view/inc/mainMenu.jsp"></jsp:include>
+				</nav>
+			</c:if>
+			
+			<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+					<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+				</ul>
+				<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			</footer>
+			
+		</div>
+	</div>	
+	
+</div>
 </body>
 </html>

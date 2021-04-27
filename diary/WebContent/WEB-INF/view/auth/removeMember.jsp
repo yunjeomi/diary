@@ -5,30 +5,81 @@
 <head>
 <meta charset="UTF-8">
 <title>removeMember</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 </head>
-<body>
-	<jsp:include page="/WEB-INF/view/inc/mainMenu.jsp"></jsp:include>
+<body class="is-preload">
+<!-- Wrapper -->
+<div id="wrapper">
+
+	<!-- Main -->
+	<div id="main">
+		<div class="inner">
+		
+		<!-- Content -->
+		<section>
+			<header class="major">
+				<h2>회원탈퇴</h2>
+			</header>
+			
+			<form action="${pageContext.request.contextPath}/auth/removeMember" method="post">
+				<div class="table-wrapper">
+					<table class="alt">
+						<tr>
+							<td>ID</td>
+							<td>
+								<input type="hidden" name="memberNo" value="${member.memberNo}">
+								<input type="text" name="memberId" value="${member.memberId}" readonly>
+							</td>
+						</tr>
+						<tr>
+							<td>PW</td>
+							<td>
+								<input type="password" name="memberPw">
+							</td>
+						</tr>
+					</table>
+					<button type="submit">회원탈퇴</button>
+					<a href="${pageContext.request.contextPath}/auth/myAccount" class="button primary">취소</a>
+				</div>
+			</form>
+		</section>
+		
+		</div>
+	</div>
 	
-	<h1>회원탈퇴</h1>
+	<!-- Sidebar -->
+	<div id="sidebar">
+		<div class="inner">
+			
+			<!-- Menu -->
+			<nav id="menu">
+				<header class="major">
+					<h2>${sessionMember.memberId}님 반갑습니다.</h2>
+				</header>
+				<jsp:include page="/WEB-INF/view/inc/mainMenu.jsp"></jsp:include>
+			</nav>
+		
+			<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+					<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+				</ul>			
+				<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			</footer>
+			
+		</div>
+	</div>
 	
-	<form action="${pageContext.request.contextPath}/auth/removeMember" method="post">
-		<table border="1">
-			<tr>
-				<td>ID</td>
-				<td>
-					<input type="hidden" name="memberNo" value="${member.memberNo}">
-					<input type="text" name="memberId" value="${member.memberId}" readonly>
-				</td>
-			</tr>
-			<tr>
-				<td>PW</td>
-				<td>
-					<input type="password" name="memberPw">
-				</td>
-			</tr>
-		</table>
-		<button type="submit">회원탈퇴</button>
-	</form>
-	<a href="${pageContext.request.contextPath}/auth/myAccount">취소</a>
+</div>
 </body>
 </html>
