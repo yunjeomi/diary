@@ -24,7 +24,7 @@
 		<!-- Content -->
 		<section>
 			<header class="major">
-				<h2>회원가입</h2>
+				<h2>Create your account</h2>
 			</header>
 			
 			<form action="${pageContext.request.contextPath}/addMember" method="post">
@@ -44,8 +44,8 @@
 						</tr>
 					</table>
 				</div>
-				<button type="submit">회원가입</button>
-				<a href="${pageContext.request.contextPath}/login" class="button primary">취소</a>
+				<button type="submit">Join</button>
+				<a href="${pageContext.request.contextPath}/login" class="button primary">Go back</a>
 			</form>
 		</section>
 		
@@ -61,8 +61,8 @@
 					<div>ID <input type="text" name="memberId"></div>
 					<div>PW <input type="password" name="memberPw"></div>
 					<br>
-					<button type="submit">로그인</button>
-					<a href="${pageContext.request.contextPath}/addMember" class="button primary">회원가입</a>
+					<button type="submit">Login</button>
+					<a href="${pageContext.request.contextPath}/addMember" class="button primary">Join us</a>
 				</form>
 			</section>
 			

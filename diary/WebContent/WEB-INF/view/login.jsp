@@ -25,6 +25,8 @@
 					<h1>Simple Diary</h1>
 				</header>
 				
+				<!-- 로그인 전; 로그인 안 되어있을 때 -->
+				<c:if test="${sessionMember == null}">
 				<section>
 					<header class="main">
 					<h2>Write down what happens each day!</h2>
@@ -32,6 +34,18 @@
 					<h2>Let's join us!</h2>
 					</header>
 				</section>
+				</c:if>
+				
+				<!-- 로그인 후; 로그인 되어있을 때 -->
+				<c:if test="${sessionMember != null}">
+				<section>
+					<header class="main">
+					<h2>Welcome!</h2>
+					<h2>Click a diary and Add your todoList!</h2>
+					<h2>Enjoy posting your everything!</h2>
+					</header>
+				</section>
+				</c:if>
 
 		</div>
 	</div>
@@ -47,8 +61,8 @@
 						<div>ID <input type="text" name="memberId"></div>
 						<div>PW <input type="password" name="memberPw"></div>
 						<br>
-						<button type="submit">로그인</button>
-						<a href="${pageContext.request.contextPath}/addMember" class="button primary">회원가입</a>
+						<button type="submit">Login</button>
+						<a href="${pageContext.request.contextPath}/addMember" class="button primary">Join us</a>
 					</form>
 				</section>
 			</c:if>
@@ -58,7 +72,7 @@
 			<c:if test="${sessionMember != null}">
 				<nav id="menu">
 					<header class="major">
-						<h2>${sessionMember.memberId}님 반갑습니다.</h2>
+						<h2>Welcome ${sessionMember.memberId}!</h2>
 					</header>
 					<jsp:include page="/WEB-INF/view/inc/mainMenu.jsp"></jsp:include>
 				</nav>

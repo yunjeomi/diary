@@ -48,8 +48,8 @@
 				</table>
 				<input type="hidden" name="memberNo" value="${todoOne.memberNo}">
 				<input type="hidden" name="todoNo" value="${todoOne.todoNo}">
-				<a href="${pageContext.request.contextPath}/auth/modifyTodoOne?memberNo=${todoOne.memberNo}&todoNo=${todoOne.todoNo}" class="button">수정</a>
-				<a href="${pageContext.request.contextPath}/auth/removeTodoOne?memberNo=${todoOne.memberNo}&todoNo=${todoOne.todoNo}" class="button primary">삭제</a>
+				<a href="${pageContext.request.contextPath}/auth/modifyTodoOne?memberNo=${todoOne.memberNo}&todoNo=${todoOne.todoNo}" class="button">Modify</a>
+				<a href="${pageContext.request.contextPath}/auth/removeTodoOne?memberNo=${todoOne.memberNo}&todoNo=${todoOne.todoNo}" class="button primary">Delete</a>
 			</div>
 		</section>
 		
@@ -63,7 +63,7 @@
 			<!-- Menu -->
 			<nav id="menu">
 				<header class="major">
-					<h2>${sessionMember.memberId}님 반갑습니다.</h2>
+					<h2>Welcome ${sessionMember.memberId}!</h2>
 				</header>
 				<jsp:include page="/WEB-INF/view/inc/mainMenu.jsp"></jsp:include>
 			</nav>

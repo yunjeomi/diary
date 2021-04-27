@@ -24,7 +24,7 @@
 		<!-- Content -->
 		<section>
 			<header class="major">
-				<h2>Todo 추가</h2>
+				<h2>Add Todo</h2>
 			</header>
 			
 			<form action="${pageContext.request.contextPath}/auth/addTodo" method="post">
@@ -47,8 +47,8 @@
 							<td><input type="color" name="todoFontColor"></td>
 						</tr>
 					</table>
-					<button type="submit">추가</button>
-					<a href="${pageContext.request.contextPath}/auth/diary" class="button primary">취소</a>
+					<button type="submit">Add</button>
+					<a href="${pageContext.request.contextPath}/auth/diary" class="button primary">Go back</a>
 				</div>
 			</form>
 		</section>
@@ -63,7 +63,7 @@
 			<!-- Menu -->
 			<nav id="menu">
 				<header class="major">
-					<h2>${sessionMember.memberId}님 반갑습니다.</h2>
+					<h2>Welcome ${sessionMember.memberId}!</h2>
 				</header>
 				<jsp:include page="/WEB-INF/view/inc/mainMenu.jsp"></jsp:include>
 			</nav>

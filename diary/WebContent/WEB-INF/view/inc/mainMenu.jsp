@@ -7,9 +7,9 @@
 </head>
 <body>
 	<ul>
-		<li><a href="${pageContext.request.contextPath}/auth/diary">다이어리</a></li>
-		<li><a href="${pageContext.request.contextPath}/auth/myAccount">회원정보</a></li>
-		<li><a href="${pageContext.request.contextPath}/auth/logout">로그아웃</a></li>
+		<li><a href="${pageContext.request.contextPath}/auth/diary">Diary</a></li>
+		<li><a href="${pageContext.request.contextPath}/auth/myAccount">My account</a></li>
+		<li><a href="${pageContext.request.contextPath}/auth/logout">Logout</a></li>
 	</ul>
 </body>
 </html>

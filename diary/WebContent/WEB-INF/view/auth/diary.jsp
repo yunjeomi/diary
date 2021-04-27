@@ -53,18 +53,24 @@
 				<h2>Calendar</h2>
 			</header>
 			
+			<p>Click a day to write down what happens and add your todoList</p>
 			<h2>
-				<a href="${pageContext.request.contextPath}/auth/diary?targetYear=${diaryMap.targetYear}&targetMonth=${diaryMap.targetMonth-1}">이전 달</a>
-				&lt;${diaryMap.targetYear}년 ${diaryMap.targetMonth+1}월&gt;
-				<a href="${pageContext.request.contextPath}/auth/diary?targetYear=${diaryMap.targetYear}&targetMonth=${diaryMap.targetMonth+1}">다음 달</a>
+				<a href="${pageContext.request.contextPath}/auth/diary?targetYear=${diaryMap.targetYear}&targetMonth=${diaryMap.targetMonth-1}">&lt;&lt;</a>
+				${diaryMap.targetYear}. ${diaryMap.targetMonth+1}
+				<a href="${pageContext.request.contextPath}/auth/diary?targetYear=${diaryMap.targetYear}&targetMonth=${diaryMap.targetMonth+1}">&gt;&gt;</a>
 			</h2>
-			
 			<c:set var="totalCell" value="${diaryMap.startBlank+diaryMap.endDay+diaryMap.endBlank}"/>
 			
 			<div class="table-wrapper">
 				<table class="alt">
 					<tr style="text-align:center; vertical-align:center;">
-						<td>일</td><td>월</td><td>화</td><td>수</td><td>목</td><td>금</td><td>토</td>
+						<td width="14.28%">SUN</td>
+						<td width="14.28%">MON</td>
+						<td width="14.28%">TUE</td>
+						<td width="14.28%">WED</td>
+						<td width="14.28%">THU</td>
+						<td width="14.28%">FRI</td>
+						<td width="14.28%">SAT</td>
 					</tr>
 					
 					<tr>
@@ -110,7 +116,7 @@
 			<!-- Menu -->
 			<nav id="menu">
 				<header class="major">
-					<h2>${sessionMember.memberId}님 반갑습니다.</h2>
+					<h2>Welcome ${sessionMember.memberId}!</h2>
 				</header>
 				<jsp:include page="/WEB-INF/view/inc/mainMenu.jsp"></jsp:include>
 			</nav>

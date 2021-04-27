@@ -24,7 +24,7 @@
 		<!-- Content -->
 		<section>
 			<header class="major">
-				<h2>Todo 수정</h2>
+				<h2>Modify todo</h2>
 			</header>
 			
 			<form action="${pageContext.request.contextPath}/auth/modifyTodoOne" method="post">
@@ -59,8 +59,8 @@
 					</table>
 					<input type="hidden" name="memberNo" value="${todoOne.memberNo}">
 					<input type="hidden" name="todoNo" value="${todoOne.todoNo}">
-					<button type="submit">수정</button>
-					<a href="${pageContext.request.contextPath}/auth/todoOne?todoNo=${todoOne.todoNo}" class="button primary">취소</a>
+					<button type="submit">Modify</button>
+					<a href="${pageContext.request.contextPath}/auth/todoOne?todoNo=${todoOne.todoNo}" class="button primary">Go back</a>
 				</div>
 			</form>
 		</section>
@@ -75,7 +75,7 @@
 			<!-- Menu -->
 			<nav id="menu">
 				<header class="major">
-					<h2>${sessionMember.memberId}님 반갑습니다.</h2>
+					<h2>Welcome ${sessionMember.memberId}!</h2>
 				</header>
 				<jsp:include page="/WEB-INF/view/inc/mainMenu.jsp"></jsp:include>
 			</nav>

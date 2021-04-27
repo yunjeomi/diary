@@ -24,7 +24,7 @@
 		<!-- Content -->
 		<section>
 			<header class="major">
-				<h2>회원정보</h2>
+				<h2>My account</h2>
 			</header>
 			
 			<div class="table-wrapper">
@@ -35,14 +35,14 @@
 					</tr>
 					<tr>
 						<td>PW</td>
-						<td><a href="${pageContext.request.contextPath}/auth/modifyMemberPw">변경</a></td>
+						<td><a href="${pageContext.request.contextPath}/auth/modifyMemberPw">Change PW</a></td>
 					</tr>
 					<tr>
-						<td>가입일</td>
+						<td>Join date</td>
 						<td>${member.memberDate}</td>
 					</tr>
 				</table>
-				<a href="${pageContext.request.contextPath}/auth/removeMember" class="button">회원탈퇴</a>
+				<a href="${pageContext.request.contextPath}/auth/removeMember" class="button">Delete your account</a>
 			</div>
 		</section>
 		
@@ -56,7 +56,7 @@
 			<!-- Menu -->
 			<nav id="menu">
 				<header class="major">
-					<h2>${sessionMember.memberId}님 반갑습니다.</h2>
+					<h2>Welcome ${sessionMember.memberId}!</h2>
 				</header>
 				<jsp:include page="/WEB-INF/view/inc/mainMenu.jsp"></jsp:include>
 			</nav>

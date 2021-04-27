@@ -24,7 +24,7 @@
 		<!-- Content -->
 		<section>
 			<header class="major">
-				<h2>Pw변경</h2>
+				<h2>Change PW</h2>
 			</header>
 			
 			<form action="${pageContext.request.contextPath}/auth/modifyMemberPw" method="post">
@@ -44,8 +44,8 @@
 							</td>
 						</tr>
 					</table>
-					<button type="submit">변경</button>
-					<a href="${pageContext.request.contextPath}/auth/myAccount" class="button primary">취소</a>
+					<button type="submit">Modify</button>
+					<a href="${pageContext.request.contextPath}/auth/myAccount" class="button primary">Go back</a>
 				</div>
 			</form>
 		</section>
@@ -60,7 +60,7 @@
 			<!-- Menu -->
 			<nav id="menu">
 				<header class="major">
-					<h2>${sessionMember.memberId}님 반갑습니다.</h2>
+					<h2>Welcome ${sessionMember.memberId}!</h2>
 				</header>
 				<jsp:include page="/WEB-INF/view/inc/mainMenu.jsp"></jsp:include>
 			</nav>
