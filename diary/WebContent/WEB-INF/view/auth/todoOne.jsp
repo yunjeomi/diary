@@ -7,11 +7,13 @@
 <title>todoOne</title>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/view/inc/mainMenu.jsp"></jsp:include>
+	
 	<h1>todoOne</h1>
 	
 	<table border="1">
 		<tr>
-			<td>todoDate</td>
+			<td>Date</td>
 			<td>${todoOne.todoDate}</td>
 		</tr>
 		<tr>
@@ -35,6 +37,5 @@
 	<input type="hidden" name="todoNo" value="${todoOne.todoNo}">
 	<a href="${pageContext.request.contextPath}/auth/modifyTodoOne?memberNo=${todoOne.memberNo}&todoNo=${todoOne.todoNo}">수정</a>
 	<a href="${pageContext.request.contextPath}/auth/removeTodoOne?memberNo=${todoOne.memberNo}&todoNo=${todoOne.todoNo}">삭제</a>
-	<a href="${pageContext.request.contextPath}/auth/diary">메인다이어리</a>
 </body>
 </html>

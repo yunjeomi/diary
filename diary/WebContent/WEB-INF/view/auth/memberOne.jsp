@@ -7,22 +7,24 @@
 <title>memberOne</title>
 </head>
 <body>
-	<h1>MyAccount</h1>
+	<jsp:include page="/WEB-INF/view/inc/mainMenu.jsp"></jsp:include>
+	
+	<h1>내 정보</h1>
+	
 	<table border="1">
 		<tr>
-			<td>memberId</td>
+			<td>ID</td>
 			<td>${member.memberId}</td>
 		</tr>
 		<tr>
-			<td>memberDate</td>
-			<td>${member.memberDate}</td>
+			<td>PW</td>
+			<td><a href="${pageContext.request.contextPath}/auth/modifyMemberPw">변경</a></td>
 		</tr>
 		<tr>
-			<td>memberPw</td>
-			<td><a href="${pageContext.request.contextPath}/auth/modifyMemberPw">변경</a></td>
+			<td>가입일</td>
+			<td>${member.memberDate}</td>
 		</tr>
 	</table>
 	<a href="${pageContext.request.contextPath}/auth/removeMember"><button type="button">회원탈퇴</button></a>
-	<a href="${pageContext.request.contextPath}/login"><button type="button">홈으로</button></a>
 </body>
 </html>

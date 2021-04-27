@@ -7,19 +7,21 @@
 <title>removeMember</title>
 </head>
 <body>
-	<h1>removeMember</h1>
+	<jsp:include page="/WEB-INF/view/inc/mainMenu.jsp"></jsp:include>
+	
+	<h1>회원탈퇴</h1>
 	
 	<form action="${pageContext.request.contextPath}/auth/removeMember" method="post">
 		<table border="1">
 			<tr>
-				<td>memberId</td>
+				<td>ID</td>
 				<td>
 					<input type="hidden" name="memberNo" value="${member.memberNo}">
 					<input type="text" name="memberId" value="${member.memberId}" readonly>
 				</td>
 			</tr>
 			<tr>
-				<td>memberPw</td>
+				<td>PW</td>
 				<td>
 					<input type="password" name="memberPw">
 				</td>

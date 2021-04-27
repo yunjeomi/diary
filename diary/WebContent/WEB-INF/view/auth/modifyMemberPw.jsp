@@ -7,19 +7,21 @@
 <title>modifyMemberPw</title>
 </head>
 <body>
-	<h1>modifyMemberPw</h1>
+	<jsp:include page="/WEB-INF/view/inc/mainMenu.jsp"></jsp:include>
+	
+	<h1>Pw변경</h1>
 	
 	<form action="${pageContext.request.contextPath}/auth/modifyMemberPw" method="post">
 		<table border="1">
 			<tr>
-				<td>memberId</td>
+				<td>ID</td>
 				<td>
 					<input type="hidden" name="memberNo" value="${member.memberNo}">
 					<input type="text" name="memberId" value="${member.memberId}" readonly>
 				</td>
 			</tr>
 			<tr>
-				<td>memberPw</td>
+				<td>PW</td>
 				<td>
 					<input type="password" name="memberPw">
 				</td>

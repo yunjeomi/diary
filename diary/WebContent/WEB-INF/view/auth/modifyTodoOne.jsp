@@ -7,12 +7,14 @@
 <title>modifyTodoOne</title>
 </head>
 <body>
-	<h1></h1>
+	<jsp:include page="/WEB-INF/view/inc/mainMenu.jsp"></jsp:include>
+	
+	<h1>Todo 수정</h1>
 	
 	<form action="" method="post">
 		<table border="1">
 			<tr>
-				<td>todoDate</td>
+				<td>Date</td>
 				<td>${todoOne.todoDate}</td>
 			</tr>
 			<tr>
